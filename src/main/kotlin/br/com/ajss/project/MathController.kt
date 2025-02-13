@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicLong
 @RestController
 class MathController {
 
+
     val counter: AtomicLong = AtomicLong()
 
     @RequestMapping(value = ["/sum/{numberOne}/{numberTwo}"])
