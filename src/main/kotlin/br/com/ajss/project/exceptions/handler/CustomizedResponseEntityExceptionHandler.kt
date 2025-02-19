@@ -1,5 +1,7 @@
-package br.com.ajss.project.exceptions
+package br.com.ajss.project.exceptions.handler
 
+import br.com.ajss.project.exceptions.ExceptionResponse
+import br.com.ajss.project.exceptions.UnsupportedMathOperationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -24,5 +26,13 @@ class CustomizedResponseEntityExceptionHandler: ResponseEntityExceptionHandler()
         val exceptionResponse = ExceptionResponse(Date(), ex.message, request.getDescription(false))
         return ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST)
     }
+
+    @ExceptionHandler(br.com.ajss.project.exceptions.ResourceNotFoundException::class)
+    fun ResourceNotFoundException(ex: Exception, request: WebRequest): ResponseEntity<ExceptionResponse> {
+        val exceptionResponse = ExceptionResponse(Date(), ex.message, request.getDescription(false))
+        return ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND)
+    }
+
+
 
 }
