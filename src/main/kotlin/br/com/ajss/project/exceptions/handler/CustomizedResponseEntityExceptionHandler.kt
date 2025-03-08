@@ -1,6 +1,7 @@
 package br.com.ajss.project.exceptions.handler
 
 import br.com.ajss.project.exceptions.ExceptionResponse
+import br.com.ajss.project.exceptions.RequiredObjectIsNullException
 import br.com.ajss.project.exceptions.UnsupportedMathOperationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,7 +22,7 @@ class CustomizedResponseEntityExceptionHandler: ResponseEntityExceptionHandler()
         return ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
-    @ExceptionHandler(UnsupportedMathOperationException::class)
+    @ExceptionHandler(RequiredObjectIsNullException::class)
     fun handleBadRequestException(ex: Exception, request: WebRequest): ResponseEntity<ExceptionResponse> {
         val exceptionResponse = ExceptionResponse(Date(), ex.message, request.getDescription(false))
         return ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST)
@@ -32,6 +33,8 @@ class CustomizedResponseEntityExceptionHandler: ResponseEntityExceptionHandler()
         val exceptionResponse = ExceptionResponse(Date(), ex.message, request.getDescription(false))
         return ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND)
     }
+
+
 
 
 
