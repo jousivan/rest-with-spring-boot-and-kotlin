@@ -2,7 +2,7 @@ package br.com.ajss.project
 
 import br.com.ajss.project.data.vo.v1.PersonVO
 import br.com.ajss.project.mapper.DozerMapper
-import br.com.ajss.project.mocks.MockPerson
+import br.com.ajss.project.unittests.mocks.MockPerson
 import br.com.ajss.project.model.Person
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -21,7 +21,7 @@ class DozerMapperTest {
     @Test
     fun parseEntityToVOTest() {
         val output: PersonVO = DozerMapper.parseObject(inputObject!!.mockEntity(), PersonVO::class.java)
-        assertEquals(0, output.key)
+        assertEquals(0, output.id)
         assertEquals("First Name Test0", output.firstName)
         assertEquals("Last Name Test0", output.lastName)
         assertEquals("Address Test0", output.address)

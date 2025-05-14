@@ -10,11 +10,10 @@ import java.util.*
 @JsonPropertyOrder("id", "author", "launchDate", "price", "title")
 data class BooksVO(
 
-    @Mapping("id")
-    @field:JsonProperty("id")
-    var key: Long = 0,
+    @JsonProperty("id")
+    var id: Long = 0,
     var author: String = "",
     var launchDate: Date? = null,
-    var price: String = "",
+    var price: Double = 0.0,
     var title: String = ""
 ) : RepresentationModel<BooksVO>()

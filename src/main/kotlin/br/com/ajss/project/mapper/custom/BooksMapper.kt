@@ -12,7 +12,7 @@ class BooksMapper {
 
     fun mapEntityToVO(books: Books): BooksVO {
         val vo = BooksVO()
-        vo.key = books.id
+        vo.id = books.id
         vo.author = books.author
         vo.launchDate = Date()
         vo.price = books.price
@@ -22,7 +22,7 @@ class BooksMapper {
 
     fun mapVOToEntity(books: BooksVO): Books {
         val entity = Books()
-        entity.id = books.key
+        entity.id = books.id
         entity.author = books.author
         entity.launchDate = books.launchDate
         entity.price = books.price

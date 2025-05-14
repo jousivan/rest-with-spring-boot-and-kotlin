@@ -1,7 +1,7 @@
-package br.com.ajss.project.mockito.services
+package br.com.ajss.project.unittests.mocks.mockito.services
 
 import br.com.ajss.project.exceptions.RequiredObjectIsNullException
-import br.com.ajss.project.mocks.MockPerson
+import br.com.ajss.project.unittests.mocks.MockPerson
 import br.com.ajss.project.repository.PersonRepository
 import br.com.ajss.project.services.PersonService
 import org.junit.jupiter.api.BeforeEach
@@ -53,9 +53,9 @@ class PersonServiceTest {
        val personOne = persons[1]
 
        assertNotNull(personOne)
-       assertNotNull(personOne.key)
+       assertNotNull(personOne.id)
        assertNotNull(personOne.links)
-       assertTrue(personOne.links.toString().contains("</api/person/v1/0>;rel=\"self\""))
+       assertTrue(personOne.links.toString().contains("</api/person/v1/1>;rel=\"self\""))
        assertEquals("First Name Test1", personOne.firstName)
        assertEquals("Last Name Test1", personOne.lastName)
        assertEquals("Address Test1", personOne.address)
@@ -64,9 +64,9 @@ class PersonServiceTest {
        val personFour = persons[4]
 
        assertNotNull(personFour)
-       assertNotNull(personFour.key)
+       assertNotNull(personFour.id)
        assertNotNull(personFour.links)
-       assertTrue(personFour.links.toString().contains("</api/person/v1/0>;rel=\"self\""))
+       assertTrue(personFour.links.toString().contains("</api/person/v1/4>;rel=\"self\""))
        assertEquals("First Name Test4", personFour.firstName)
        assertEquals("Last Name Test4", personFour.lastName)
        assertEquals("Address Test4", personFour.address)
@@ -82,9 +82,9 @@ class PersonServiceTest {
 
        val result = service.findById(1)
        assertNotNull(result)
-       assertNotNull(result.key)
+       assertNotNull(result.id)
        assertNotNull(result.links)
-       assertTrue(result.links.toString().contains("</api/person/v1/0>;rel=\"self\""))
+       assertTrue(result.links.toString().contains("</api/person/v1/1>;rel=\"self\""))
        assertEquals("First Name Test1", result.firstName)
        assertEquals("Last Name Test1", result.lastName)
        assertEquals("Address Test1", result.address)
@@ -104,7 +104,7 @@ class PersonServiceTest {
        val result = service.create(vo)
 
        assertNotNull(result)
-       assertNotNull(result.key)
+       assertNotNull(result.id)
        assertNotNull(result.links)
        assertTrue(result.links.toString().contains("</api/person/v1/0>;rel=\"self\""))
        assertEquals("First Name Test0", result.firstName)
@@ -154,9 +154,9 @@ class PersonServiceTest {
        val result = service.update(vo)
 
        assertNotNull(result)
-       assertNotNull(result.key)
+       assertNotNull(result.id)
        assertNotNull(result.links)
-       assertTrue(result.links.toString().contains("</api/person/v1/0>;rel=\"self\""))
+       assertEquals(result.links.toString(),"</api/person/v1/1>;rel=\"self\"")
        assertEquals("First Name Test1", result.firstName)
        assertEquals("Last Name Test1", result.lastName)
        assertEquals("Address Test1", result.address)

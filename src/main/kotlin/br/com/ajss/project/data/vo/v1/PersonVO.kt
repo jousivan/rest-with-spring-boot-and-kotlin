@@ -12,7 +12,7 @@ data class PersonVO(
 
     @Mapping("id")
     @field:JsonProperty("id")
-    var key: Long = 0,
+    var id: Long = 0,
     var firstName: String = "",
     var lastName: String = "",
     var address: String = "",

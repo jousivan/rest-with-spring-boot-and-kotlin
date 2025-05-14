@@ -1,4 +1,4 @@
-package br.com.ajss.project.mocks
+package br.com.ajss.project.unittests.mocks
 
 import br.com.ajss.project.data.vo.v1.PersonVO
 import br.com.ajss.project.model.Person
@@ -43,7 +43,7 @@ class MockPerson {
         person.address = "Address Test$number"
         person.firstName = "First Name Test$number"
         person.gender = if (number % 2 == 0) "Male" else "Female"
-        person.key = number.toLong()
+        person.id = number.toLong()
         person.lastName = "Last Name Test$number"
         return person
     }
